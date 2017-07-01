@@ -1,0 +1,12 @@
+*.pyc
+*.pyo
+*.o
+*.cgi
+*.log
+*.*~
+
+*.swp
+*.swo
+dhakkaJsClient/build
+dhakkaJsClient/node_modules
+node_modules/
