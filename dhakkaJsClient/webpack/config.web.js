@@ -13,7 +13,7 @@ module.exports = {
     },
 
     output: {
-        library: "dhakkaJsClient",
+        library: "DhakkaJsClient",
         path: buildPath,
         filename: "[name].js",
         libraryTarget: "umd"
