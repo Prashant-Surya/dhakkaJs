@@ -1,10 +1,16 @@
 <html>
+<body>
+<div class="dhakka hidden" id="dhakka-channel-1"></div> 
+<div class="dhakka hidden" id="dhakka-channel-2"></div> 
+<div class="dhakka hidden" id="dhakka-channel-3"></div> 
+</body>
 <head>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script> -->
 <script src="../dhakkaJsClient/build/dhakkaJsClient.js"></script> 
 <!-- <script src="dhakkaJsClient/client.js"></script> -->
 <script>
-    var client = new DhakkaJsClient('192.168.2.59', '5001', 'notifications');
+    var dhakka_elements = document.getElementsByClassName('dhakka');
+    var client = new DhakkaJsClient('127.0.0.1', '5001', 'notifications');
     client.socket.on('connect', function(){
         console.log('connected');
         var nsp = client.subscribe('test');
@@ -12,7 +18,12 @@
             console.log(data);
         });
     });
-    client.socket.emit('sending', 'test-data-from-client');
+    
+    for(var i=0; i<dhakka_elements.length; i++) {
+        client.subscribe(dhakka_elements[i].id);
+    }
+
+    //client.socket.emit('sending', 'test-data-from-client');
 </script>
 </head>
 <body>
